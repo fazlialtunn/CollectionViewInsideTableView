@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
-        tableView.backgroundColor = .red
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -25,6 +24,10 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         title = "Hello"
+        models.append(Model(text: "First", imageName: "nftrhino"))
+        models.append(Model(text: "Second", imageName: "nftrhino"))
+        models.append(Model(text: "Third", imageName: "nftrhino"))
+        models.append(Model(text: "Fourth", imageName: "nftrhino"))
         setupTable()
     }
     
@@ -45,7 +48,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
-        cell.backgroundColor = .green
+        cell.configure(with: models)
         return cell
     }
     

@@ -18,6 +18,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     lazy var myImageView: UIImageView = {
         let myImageView = UIImageView()
+        myImageView.contentMode = .scaleAspectFill
         myImageView.translatesAutoresizingMaskIntoConstraints = false
         return myImageView
     }()
@@ -30,9 +31,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             myImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             myImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            myImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            myImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            myImageView.bottomAnchor.constraint(equalTo: myLabel.topAnchor, constant: -10),
             
-            myLabel.topAnchor.constraint(equalTo: myImageView.bottomAnchor, constant: 10),
+            myImageView.heightAnchor.constraint(equalToConstant: 200),
+            myImageView.widthAnchor.constraint(equalToConstant: 200),
+            
+            myLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             myLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             myLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
